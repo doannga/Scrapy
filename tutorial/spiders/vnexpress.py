@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 # cái này lỗi vì trong tutorial, file items không có lớp crawlExpressItem
-from tutorial.items import crawlExpressItem
+from tutorial.items import TutorialItem
 
 class VnexpressSpider(scrapy.Spider):
     name = 'vnexpress'
@@ -16,7 +16,7 @@ class VnexpressSpider(scrapy.Spider):
         #response.xpath("//a[@title]").extract() có phải 1 list k?
     	for title_new in response.xpath("//a[@title]").extract():
             # định nghĩa lại crawlExpressItem() đi nhé
-    	    item = crawlExpressItem()
+    	    item = TutorialItem()
     	    item['title'] = response.xpath("//a[@title]/text()").extract()
     	    items.append(item)
     	    return items
