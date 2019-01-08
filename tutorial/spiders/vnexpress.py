@@ -12,8 +12,10 @@ class VnexpressSpider(scrapy.Spider):
     		yield scrapy.Request(url = url, callback = self.parse)
     	pass
     def parse(self, response):
+    	items = []
     	for title_new in response.xpath("//a[@title]").extract():
     	    item = crawlExpressItem()
     	    item['title'] = response.xpath("//a[@title]/text()").extract()
-    	    return item
+    	    items.append(item)
+    	    return items
         pass
