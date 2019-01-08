@@ -18,6 +18,7 @@ class VnexpressSpider(scrapy.Spider):
             # định nghĩa lại crawlExpressItem() đi nhé
     	    item = TutorialItem()
     	    item['title'] = response.xpath("//a[@title]/text()").extract()
+    	    item['url'] = response.xpath("//a[@title]/@href").extract()
     	    items.append(item)
     	    return items
         pass
